@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+* img {
+  background: none;
+}
+
+/* Bouton robot */
+label {
+  position: fixed;
+  right: 30px;
+  bottom: 20px;
+  height: 55px;
+  width: 55px;
+  line-height: 55px;
+  border-radius: 50px;
+  font-size: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+/* Cacher la checkbox */
+#click {
+  display: none;
+}
+
+/* Toute la page du chatbox incluant header */
+.page {
+  overflow: scroll;
+  max-height: 480px;
+  position: fixed;
+  bottom: 0px;
+  right: 30px;
+  width: 350px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.page * {
+  background: white;
+}
+
+.page p {
+  background: none;
+}
+
+/* Affiche la page quand la case est cochée */
+#click:checked ~ .page {
+  opacity: 1;
+  bottom: 85px;
+  pointer-events: auto;
+}
+
+/* Titre du chatbox */
+.page .head-text {
+  width: 350px;
+  position:fixed;
+  line-height: 60px;
+  color: #fff;
+  border-radius: 8px 8px 0 0;
+  padding: 0 20px;
+  font-weight: 500;
+  font-size: 20px;
+  background: #4070F4;
+}
+
+.chat-box {
+  padding-top: 77px;
+  padding-left: 11px;
+  width: 98%;
+}
+
+.chat-box img{
+  max-width: 80%;
+}
+
+/* Formulaire et champs de saisie */
+.chat-box form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+form .field textarea {
+  resize: none;
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+form .field button {
+  margin: 0px;
+  height: 50px;
+  width: 100%;
+  background: #5e5eff;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0 20px;
+  transition: all 0.3s ease;
+}
+
+.field textarea::placeholder {
+  color: silver;
+  padding-left: 5px;
+}
+
+.field button:active {
+  transform: scale(0.95);
+}
+
+
+.message {
+  border: 1px solid lightgray;
+  max-width: 171px;
+  background: #e9c8ea;
+  border-radius: 10px;
+  font-size: 15px;
+  padding-inline: 10px;
+}
+
+.chat-box button {
+  font-family: 'Poppins', sans-serif;
+  color: black;
+}
+
+.message p {
+  word-wrap: break-word;
+}
+
+.useronline {
+  font-size: 13px;
+}
+
+.user {
+  max-width: 230px;
+  background: #ffffff;
+  border-radius: 10px;
+  font-size: 13px;
+  padding: 5px;
+  align-self: flex-end;
+
+}
+
+#messuser {
+  background: #3fc8f2;
+}
+
+.discussion {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  overflow-y: auto;
+
+}
+
+.chatButton {
+  display: flex;
+}
+
+.chatButton textarea {
+  resize: none;
+}
