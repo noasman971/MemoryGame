@@ -1,0 +1,523 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background-color: #12131d;
+}
+header{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 48vh;
+    width: 100%;
+    background-image: url("../../assets/img/background.png") ;
+    background-position: center center;
+    background-repeat:no-repeat ;
+    background-size: cover;
+
+}
+/* ----- TITRE ----- */
+.titre{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #1c1d2d;
+    padding-bottom: 50px;
+}
+.titre h1{
+    font-size: 5em;
+    font-family: "KashimaDemo";
+    color: white;
+}
+.titre p{
+    margin-top: 5px;
+    font-family: "KashimaDemo";
+    color: white;
+}
+/* ----- Jeu ----- */
+
+#timerDiv{
+    background-color: #1c1d2d;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+#affichageTimer{
+    color: #ffffff;
+    font-size: 30px;
+    background-color: #5e5eff;
+    padding: 5px;
+    border-radius: 25px;
+    text-align: center;
+    width: 150px;
+    border-radius: 10px;
+    transition: 0.5s ease all;
+}
+#affichageTimer:hover{
+    color: white;
+    background-color: #2f2fff;
+}
+
+.separateur {
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.separateur h1{
+    font-size: 5em;
+    font-family: "KashimaDemo";
+    color: #000000;
+}
+.separateur::before,
+.separateur::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 5px;
+    background-color: #5e5eff;
+}
+.visible{
+    visibility: visible;
+    transition: 0.5s;
+    background-color: white;
+
+}
+
+.cacher{
+    visibility: hidden;
+}
+
+.separateur::before {
+    left: 0;
+    width: 490px;
+}
+
+.separateur::after {
+    right: 0;
+    width: 489px;
+}
+
+.sec{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 50px 50px 50px;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    background-color: #1c1d2d;
+}
+.on{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+    padding: 50px;
+    background-color: white;
+    border-left: 5px solid #5e5eff;
+    border-right: 5px solid #5e5eff;
+    border-bottom: 5px solid #5e5eff;
+    border-radius: 0px 0px 10px 10px;
+
+}
+.on input{
+    width: 80%;
+    font-size: 1.1em;
+    padding: 10px;
+    background-color: #5e5eff;
+    border: none;
+    border-radius: 10px;
+    transition: 0.5s ease all;
+    outline: none;
+}
+.on input:hover{
+    color: white;
+    background-color: #2f2fff;
+}
+.sec select{
+    padding: 5px;
+    font-size: 1.2em;
+    width: 80%;
+}
+
+.complexité{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 40px;
+    background-color: white;
+    width: 40%;
+    border-radius: 20px;
+
+}
+
+.complexité button{
+    background-color: white;
+    border: 2px solid black;
+    margin: 10px;
+    padding: 5px 10px 5px 10px;
+}
+
+/* JEU 1 */
+.jeu1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+    background-color: #1c1d2d;
+    flex-direction: column;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 200px);
+    grid-template-rows: repeat(4, 200px);
+    gap: 10px;
+}
+.bloc {
+    width: 100%;
+    height: 100%;
+    background-image: url('#');
+    background-size: cover;
+    background-color: red;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+.bloc.animate {
+    animation: bounce 0.4s ease ;
+    background-color: white;
+    transition: 0.5s ease all;
+}
+
+
+.wrapper img{
+    width: 100%;
+    height: 100%;
+}
+
+.confirm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* Style de la boîte */
+.confirm-box {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.confirm-box p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.confirm-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.confirm-buttons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#confirmYes {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#confirmNo {
+    background-color: #f44336;
+    color: white;
+}
+
+
+
+/*retour en haut de la page*/
+html{
+  scroll-behavior: smooth;
+}
+
+#retour_haut_page{
+  display: flex;
+  justify-content: center;
+  background-color: #272a51;
+}
+#texte_haut_page{
+  border: 3px solid #4AA3A2;
+  color: #4AA3A2;
+  font-family: "Bradley Hand", cursive;
+  border-radius: 25px;
+  padding: 10px;
+  background-color: #A7E0E0;
+  text-decoration:none;
+}
+#texte_haut_page:active{
+    transform: scale(0.8);
+
+}
+
+
+
+@font-face {
+    font-family: "KashimaDemo";
+    src: url("../font/KashimaDemo.otf") format("opentype");
+
+}
+
+
+
+
+
+@media screen and (max-width: 1024px) {
+
+body{
+    height: 100%;
+}
+    .complexité{
+        width: 90%;
+    }
+    .wrapper{
+        grid-template-columns: repeat(4, 150px); /* 3 colonnes pour les petits écrans */
+        grid-template-rows: repeat(4, 150px);
+    }
+
+    .jeu{
+        width:100%;
+        height: 100%;
+    }
+    .bloc img{
+        width: 100% ;
+    }
+    .bloc{
+        width: 100%;
+        height: 100%;
+    }
+    .jeu1{
+        overflow: scroll
+    }
+    .on{
+        width: 83%;
+    }
+    .on input{
+        width: 135%;
+        font-size: 0.9em;
+        padding: 10px;
+        background-color: #5e5eff;
+        border: none;
+        border-radius: 10px;
+        transition: 0.5s ease all;
+        outline: none;
+    }
+    .on input:hover{
+        color: white;
+        background-color: #2f2fff;
+    }
+    .sec select{
+        padding: 5px;
+        font-size: 1.2em;
+        width: 130%;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    body{
+        height: 100%;
+    }
+    header{
+        height: 13vh;
+    }
+    .titre h1{
+        font-size: 3em;
+    }
+    .titre p{
+        padding: 5px;
+
+    }
+    .complexité{
+        width: 90%;
+    }
+    .wrapper{
+        grid-template-columns: repeat(4, 100px); /* 3 colonnes pour les petits écrans */
+        grid-template-rows: repeat(4, 100px);
+    }
+
+    .jeu{
+        width:100%;
+        height: 100%;
+    }
+    .bloc img{
+        width: 100% ;
+    }
+    .on input{
+        width: 135%;
+        font-size: 0.9em;
+        padding: 10px;
+        background-color: #5e5eff;
+        border: none;
+        border-radius: 10px;
+        transition: 0.5s ease all;
+        outline: none;
+    }
+    .on input:hover{
+        color: white;
+        background-color: #2f2fff;
+    }
+    .sec select{
+        padding: 5px;
+        font-size: 1.2em;
+        width: 130%;
+    }
+    .bloc{
+        width: 100%;
+        height: 100%;
+    }
+    .jeu1{
+        overflow: scroll
+    }
+
+
+}
+
+
+@media screen and (max-width: 480px) {
+
+    header{
+        height: 24vh;
+    }
+    .titre h1{
+        font-size: 2.5em;
+    }
+    .titre p{
+        padding: 5px;
+    }
+    .complexité{
+        width: 90%;
+    }
+    .complexité p{
+        font-size: 0.9em;
+        padding-bottom: 15px;
+        padding-top: 10px;
+    }
+    .wrapper{
+        grid-template-columns: repeat(3, 100px); /* 3 colonnes pour les petits écrans */
+        grid-template-rows: repeat(6, 100px);
+    }
+
+    .jeu{
+        width:100%;
+        height: 100%;
+    }
+    .jeu1{
+        overflow: scroll
+    }
+    .bloc img{
+        width: 100% ;
+    }
+    .bloc{
+        width: 80%;
+        height: 80%;
+    }
+
+    .on{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 20px;
+        width: 110%;
+        padding: 50px;
+        background-color: white;
+        border-left: 5px solid #5e5eff;
+        border-right: 5px solid #5e5eff;
+        border-bottom: 5px solid #5e5eff;
+        border-radius: 0px 0px 10px 10px;
+
+    }
+
+    .separateur::before{
+        width: 100%;
+    }
+    .on input{
+        width: 135%;
+        font-size: 0.9em;
+        padding: 10px;
+        background-color: #5e5eff;
+        border: none;
+        border-radius: 10px;
+        transition: 0.5s ease all;
+        outline: none;
+    }
+    .on input:hover{
+        color: white;
+        background-color: #2f2fff;
+    }
+    .sec select{
+        padding: 5px;
+        font-size: 1.2em;
+        width: 130%;
+    }
+
+    .complexité{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin: 40px;
+        background-color: white;
+        width: 40%;
+        border-radius: 20px;
+
+    }
+
+    .complexité button{
+        background-color: white;
+        border: 2px solid black;
+        margin: 10px;
+        padding: 5px 10px 5px 10px;
+    }
+
+    .wrapper{
+        grid-row-gap: 6px;
+        grid-column-gap: 6px;
+
+    }
+    .wrapper img{
+        object-fit: cover;
+
+    }
+}
